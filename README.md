@@ -6,7 +6,7 @@ The list of requried tools:
 
 * Docker
 * Redis
-* MuSQL
+* MySQL
 * GitHub
 * GitHub Actions
 * Terraform
