@@ -35,17 +35,17 @@ While there are lots of potential benefits to microservices, the best reason to 
 
 ## Chapter 2: Designing a Microservices Operating Model
 
-An operating model is the set of people, processes and tools that underlies the system. It shapes all the decision making and work that we do when we build software.
+An operating model is the set of people, processes and tools that underlies the system. It shapes all the decision-making and work that we do when we build software.
 
-In this chapter, we will cover the relationship between teams and microservices implementations with introduction of a tool called Team Topologies.
+In this chapter, we will cover the relationship between teams and microservices implementations with the introduction of a tool called Team Topologies.
 
 According to Melvin Conway's finding in the [article](https://www.melconway.com/Home/pdf/committees.pdf), we can paraphrase the main thesis, called "Conway's Law":
 
-> Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure. (Attributed to Fredertick Brooks)
+> Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure. (Attributed to Frederick Brooks)
 
-There are 3 people factors that have the biggest impact on a microservices system: team size, team skills, and interteam coordination.
+There are 3 people factors that have the biggest impact on a microservices system: team size, team skills, and inter-team coordination.
 
-If we go too far towards team independence and autonomy, we’ll introduce systemlevel inefficiencies and misalignment with organizational goals. If we introduce too much coordination, we risk bogging the whole system down and losing the benefits of highly changeable microservices. The challenge is to strike the right balance between independent work and coordinated efforts. That takes some experimentation and continuous tuning of your team design.
+If we go too far towards team independence and autonomy, we’ll introduce system-level inefficiencies and misalignment with organizational goals. If we introduce too much coordination, we risk bogging the whole system down and losing the benefits of highly changeable microservices. The challenge is to strike the right balance between independent work and coordinated efforts. That takes some experimentation and continuous tuning of your team design.
 
 According to the Team Topology, there are 4 team types:
 * Stream-Aligned
@@ -60,8 +60,8 @@ Also, there are 3 interaction modes:
 
 To create a team design and Team Topology, we can follow this step-by-step approach:
 
-1. Establish a system design team. This is a group of people that who can shape the vision and behavior of the system. It designs team structures, establishes standards, incentives, and "guardrails" as well as continually improves the system.
-2. Create a microservices team template for future teams. Microservices teams are expected to own one or more microservices independently. That ownership includes running the service and releasing a continuous stream of improvements, fiexs, and changes as needed.
+1. Establish a system design team. This is a group of people who can shape the vision and behavior of the system. It designs team structures, establishes standards, incentives, and "guardrails" as well as continually improves the system.
+2. Create a microservices team template for future teams. Microservices teams are expected to own one or more microservices independently. That ownership includes running the service and releasing a continuous stream of improvements, fixes, and changes as needed.
 3. Define platform teams. We can instantiate a cloud platform team that offers network, application, and deployment infrastructure to the rest of the organization as a service.
-4. Add enabling and complicated-subsystem teams. We can introduce a specialized release team which embodies the complicated-subsystem team type. In this case, microservices teams deliver a built and tested container. However, it is possible that a microservices team deploys its own services directly into a production environment.
+4. Add enabling and complicated-subsystem teams. We can introduce a specialized release team that embodies the complicated-subsystem team type. In this case, microservices teams deliver a built and tested container. However, a microservices team may deploy its own services directly into a production environment.
 5. Add key consumer teams. These could be mobile application development teams, web development teams, or even third-party organizations. In this model, the main consumer of the microservices system is the API team which is responsible for exposing the microservices to other development teams.
