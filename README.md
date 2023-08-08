@@ -61,7 +61,7 @@ Also, there are 3 interaction modes:
 To create a team design and Team Topology, we can follow this step-by-step approach:
 
 1. Establish a system design team. This is a group of people that who can shape the vision and behavior of the system. It designs team structures, establishes standards, incentives, and "guardrails" as well as continually improves the system.
-2. Create a microservices team template for future teams.
+2. Create a microservices team template for future teams. Microservices teams are expected to own one or more microservices independently. That ownership includes running the service and releasing a continuous stream of improvements, fiexs, and changes as needed.
 3. Define platform teams.
 4. Add enabling and complicated-subsystem teams.
 5. Add key consumer teams.
