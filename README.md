@@ -2,7 +2,7 @@
 
 ## Preface
 
-The list of requried tools:
+The list of required tools:
 
 * Docker
 * Redis
@@ -15,7 +15,7 @@ The list of requried tools:
 * Helm
 * Argo CD
 
-## Chapter 1: Toward a Microcervices Architecture
+## Chapter 1: Toward a Microservices Architecture
 
 In the early 2010s, the term *microservices* emerged as a way to describe a new style of software architecture.
 
