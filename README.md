@@ -63,6 +63,5 @@ To create a team design and Team Topology, we can follow this step-by-step appro
 1. Establish a system design team. This is a group of people that who can shape the vision and behavior of the system. It designs team structures, establishes standards, incentives, and "guardrails" as well as continually improves the system.
 2. Create a microservices team template for future teams. Microservices teams are expected to own one or more microservices independently. That ownership includes running the service and releasing a continuous stream of improvements, fiexs, and changes as needed.
 3. Define platform teams. We can instantiate a cloud platform team that offers network, application, and deployment infrastructure to the rest of the organization as a service.
-4. Add enabling and complicated-subsystem teams.
+4. Add enabling and complicated-subsystem teams. We can introduce a specialized release team which embodies the complicated-subsystem team type. In this case, microservices teams deliver a built and tested container. However, it is possible that a microservices team deploys its own services directly into a production environment.
 5. Add key consumer teams.
-
