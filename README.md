@@ -78,5 +78,5 @@ The 7 steps of the SEED(S) process are:
 3. Discovering interaction patterns with sequence diagrams. For complex interactions, a linear list of Job Stories will not be able to sufficiently support the design effort. Instead, you will want to draw an interaction diagram, using UML diagrams as in this case.
 4. Deriving high-level actions and queries based on jobs to be done (JTBDs) and the interaction partterns.
 5. Describing each query and action as a specification, with an open standard (such as the OpenAPI Specification (OAS) or GraphQL schemas). Each Job Story can be translated into multiple queries and actions, and a resulting query or action may combine multiple Job Stories as its source. Microservices interconnections do not have to be RESTful APIs. Other popular choices include GraphQL, gRPC, and asynchronous event communications.
-6. Getting feedback on the API specification.
+6. Getting feedback on the API specification. Show the draft design of the endpoints to the client developers who will be asked to use these APIs and services, and collect their feedback.
 7. Implementing microservices.
