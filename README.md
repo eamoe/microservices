@@ -75,8 +75,8 @@ The SEED(S) process provides a repeatable, reliable, and battle-tested methodolo
 The 7 steps of the SEED(S) process are:
 1. Identifying actors. Too many APIs are simply exposures of some database tables over HTTP or an attempt to provide direct networked access into application internals, via remote procedure calls (RPCs). Such approaches often struggle in delivering for customer needs and achieving business goals. Each actor must be *specific*, more so than *precise*. Actors must be defined in context. Having a company-wide "portfolio" of actors that are reused for each application design is more than an indicator of trouble. As models, actor definitions first and foremost represent the needs, pain points, and behaviors inherent to each actor archetype.
 2. Identifying jobs that actors have to do. As Theodore Levitt said: "People don't want to buy a quarter-inch drill. They want a quarter-inch hole!" Job Stories provide a great format for conversations with subject matter experts and actual customers, but they are not convenient for deriving actual technical requirements. Rather, we need to translate them into a more developer-friendly format, which is what the next few sections of the SEED(S) process are all about.
-3. Discovering interaction patterns with sequence diagrams
-4. Deriving high-level actions and queries based on jobs to be done (JTBDs) and the interaction partterns
-5. Describing each query and action as a specification, with an open standard (such as the OpenAPI Specification (OAS) or GraphQL schemas)
-6. Getting feedback on he API specification
-7. Implementing microservices
+3. Discovering interaction patterns with sequence diagrams. For complex interactions, a linear list of Job Stories will not be able to sufficiently support the design effort. Instead, you will want to draw an interaction diagram, using UML diagrams as in this case.
+4. Deriving high-level actions and queries based on jobs to be done (JTBDs) and the interaction partterns.
+5. Describing each query and action as a specification, with an open standard (such as the OpenAPI Specification (OAS) or GraphQL schemas). Each Job Story can be translated into multiple queries and actions, and a resulting query or action may combine multiple Job Stories as its source. Microservices interconnections do not have to be RESTful APIs. Other popular choices include GraphQL, gRPC, and asynchronous event communications.
+6. Getting feedback on the API specification.
+7. Implementing microservices.
