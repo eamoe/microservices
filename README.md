@@ -65,3 +65,7 @@ To create a team design and Team Topology, we can follow this step-by-step appro
 3. Define platform teams. We can instantiate a cloud platform team that offers network, application, and deployment infrastructure to the rest of the organization as a service.
 4. Add enabling and complicated-subsystem teams. We can introduce a specialized release team that embodies the complicated-subsystem team type. In this case, microservices teams deliver a built and tested container. However, a microservices team may deploy its own services directly into a production environment.
 5. Add key consumer teams. These could be mobile application development teams, web development teams, or even third-party organizations. In this model, the main consumer of the microservices system is the API team which is responsible for exposing the microservices to other development teams.
+
+## Chapter 3: Designing Microservices: The SEED(S) Process
+
+The microservices design system here is top-down, multistep methodology, and a collection of reusable processes, where each later step evolves from a previous one. Due to its evolutionary nature, it is called Seven Essential Evolutions of Design for Services or SEED(S).
