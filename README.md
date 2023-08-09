@@ -69,3 +69,14 @@ To create a team design and Team Topology, we can follow this step-by-step appro
 ## Chapter 3: Designing Microservices: The SEED(S) Process
 
 The microservices design system here is top-down, multistep methodology, and a collection of reusable processes, where each later step evolves from a previous one. Due to its evolutionary nature, it is called Seven Essential Evolutions of Design for Services or SEED(S).
+
+The SEED(S) process provides a repeatable, reliable, and battle-tested methodology for designing service interfaces that are user-friendly and robust.
+
+The 7 steps of the SEED(S) process are:
+1. Identifying actors
+2. Identifying jobs that actors have to do
+3. Discovering interaction patterns with sequence diagrams
+4. Deriving high-level actions and queries based on jobs to be done (JTBDs) and the interaction partterns
+5. Describing each query and action as a specification, with an open standard (such as the OpenAPI Specification (OAS) or GraphQL schemas)
+6. Getting feedback on he API specification
+7. Implementing microservices
