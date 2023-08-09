@@ -73,7 +73,7 @@ The microservices design system here is top-down, multistep methodology, and a c
 The SEED(S) process provides a repeatable, reliable, and battle-tested methodology for designing service interfaces that are user-friendly and robust.
 
 The 7 steps of the SEED(S) process are:
-1. Identifying actors
+1. Identifying actors. Too many APIs are simply exposures of some database tables over HTTP or an attempt to provide direct networked access into application internals, via remote procedure calls (RPCs). Such approaches often struggle in delivering for customer needs and achieving business goals. Each actor must be *specific*, more so than *precise*. Actors must be defined in context. Having a company-wide "portfolio" of actors that are reused for each application design is more than an indicator of trouble. As models, actor definitions first and foremost represent the needs, pain points, and behaviors inherent to each actor archetype.
 2. Identifying jobs that actors have to do
 3. Discovering interaction patterns with sequence diagrams
 4. Deriving high-level actions and queries based on jobs to be done (JTBDs) and the interaction partterns
