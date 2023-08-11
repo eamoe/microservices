@@ -80,3 +80,7 @@ The 7 steps of the SEED(S) process are:
 5. Describing each query and action as a specification, with an open standard (such as the OpenAPI Specification (OAS) or GraphQL schemas). Each Job Story can be translated into multiple queries and actions, and a resulting query or action may combine multiple Job Stories as its source. Microservices interconnections do not have to be RESTful APIs. Other popular choices include GraphQL, gRPC, and asynchronous event communications.
 6. Getting feedback on the API specification. Show the draft design of the endpoints to the client developers who will be asked to use these APIs and services, and collect their feedback.
 7. Implementing microservices.
+
+## Chapter 4: Rightsizing Your Microservices: Finding Service Boundaries
+
+In this chapter, we look deep into the methodology for the effective analysis, modeling, and decomposition of large domains (Domain-Driven Design), explain the efficiency benefits of using Event Storming for domain analysis, and introduce the Universal Sizing Formula, a guidance for the effective sizing of microservices.
