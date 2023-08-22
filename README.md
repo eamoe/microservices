@@ -84,3 +84,28 @@ The 7 steps of the SEED(S) process are:
 ## Chapter 4: Rightsizing Your Microservices: Finding Service Boundaries
 
 In this chapter, we look deep into the methodology for the effective analysis, modeling, and decomposition of large domains (Domain-Driven Design), explain the efficiency benefits of using Event Storming for domain analysis, and introduce the Universal Sizing Formula, a guidance for the effective sizing of microservices.
+
+Obviously, sizing based on the lines of code would be a poor measurement as well as functional edges. According to [Lewis and Fowler](https://martinfowler.com/articles/microservices.html#OrganizedAroundBusinessCapabilities), microservices should be "organized around business capabilities," not technical needs.
+
+Microservices is primarily about minimization of coordination costs, in a complex, multiteam environment, to achieve harmony between speed and safety, at scale.
+
+Whether you are working on a greenfield project or decomposing an existing monolith, the approach should absolutely be to start with only handful of services and slowly increase the number of microservices over time. If this leads to some of your microservices initially being larger than in their target state, it is totally OK. You can split them up later.
+
+As Sam Newman introduced in his book [Building Microservices](https://www.oreilly.com/library/view/building-microservices/9781491950340/), we should strive for such a sign that the resulting services are:
+
+* Loosely coupled (unaware and independent of each other with limited number of different types of runtime calls)
+* Highly cohesive (features present in a service should be highly related, while unrelated features
+should be encapsulated elsewhere. This way, if we need to change a logical unit of functionality, we should be able to change it in one place, minimizing time to releasing that change)
+* Aligned with business capabilities (if our boundaries are closely aligned with the boundaries of business capabilities, it would naturally follow that the first and second design requirements, above, are more easily satisfied)
+
+The software design methodology known as Domain-Driven Design (DDD) significantly predates microservices architecture. It was introduced by Eric Evans in 2003, in his book [Domain-Driven Design: Tackling Complexity in
+the Heart of Software](https://www.oreilly.com/library/view/domain-driven-design-tackling/0321125215/). The main premise of the methodology is the assertion that, when analyzing complex systems, we should avoid seeking a single unified domain model representing the entire system. Rather, as Evans said in his book:
+
+> Multiple models coexist on big projects, and this works fine in many cases. Different
+models apply in different contexts.
+
+Once Evans established that a complex system is fundamentally a collection of multiple domain models, he made the critical additional step of introducing the notion of *bounded context*. Specifically, he stated that:
+
+> A Bounded Context defines the range of applicability of each model.
+
+Different context can use the same words. For example, the term account carries significantly different meaning in the identity and access management, customer management, and financial accounting contexts of an online reservation system.
