@@ -109,3 +109,7 @@ Once Evans established that a complex system is fundamentally a collection of mu
 > A Bounded Context defines the range of applicability of each model.
 
 Different context can use the same words. For example, the term account carries significantly different meaning in the identity and access management, customer management, and financial accounting contexts of an online reservation system.
+
+DDD is complex and it is a team sport. Because of that, it is very difficult to practice.
+
+However, there's a shortcut invented by Alberto Brandolini. It is a fun, lightweight, and inexpensive process alled Event Storming, which heavily based and inspired by the concept of DDD but an help us find bounded contexts in a manner of hours instead of weeks or months.
