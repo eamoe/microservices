@@ -113,3 +113,11 @@ Different context can use the same words. For example, the term account carries 
 DDD is complex and it is a team sport. Because of that, it is very difficult to practice.
 
 However, there's a shortcut invented by Alberto Brandolini. It is a fun, lightweight, and inexpensive process alled Event Storming, which heavily based and inspired by the concept of DDD but an help us find bounded contexts in a manner of hours instead of weeks or months.
+
+Bounded contexts are a good starting point for rightsizing microservices. We have to be cautious, however, to not assume that microservice boundaries are synonymous with the bounded contexts from DDD or Event Storming. They are not. As a matter of fact, microservice boundaries cannot be assumed to be constant over time. They evolve over time and tend to follow an increasing granularity of microservices as the organizations and applications they are part of mature.
+
+To achieve a reasonable sizing of microservices, we should:
+
+* Start with just a few microservices, possibly using bounded contexts.
+* Keep splitting as the application and services grow, being guided by the needs of coordination avoidance.
+* Be on the right trajectory for decreasing coordination. This is vastly more important than the current state of how “perfectly” you get service sizing.
