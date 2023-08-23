@@ -131,3 +131,7 @@ In a microservices architecture, independent deployability is emphasized as a co
 One way to prevent accessing the same data by multiple microservices is to use a delegate service which works like proxy between those microservices and the database.
 
 Another option is using shared spaces, such as data lakes which can enable multiple access to data with read-only permissions.
+
+The third possible option is to use sagas (action-compensation pattern).
+
+The Event Sourcing pattern helps to avoid data-sharing. It defines an approach to handling operations on data that's driven by a sequence of events, each of which is recorded in an append-only store. Application code sends a series of events that imperatively describe each action that has occurred on the data to the event store, where they're persisted.
