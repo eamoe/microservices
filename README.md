@@ -119,3 +119,7 @@ To achieve a reasonable sizing of microservices, we should:
 * Start with just a few microservices, possibly using bounded contexts.
 * Keep splitting as the application and services grow, being guided by the needs of coordination avoidance.
 * Be on the right trajectory for decreasing coordination. This is vastly more important than the current state of how “perfectly” you get service sizing.
+
+## Chapter 5: Dealing with the Data
+
+There can be a number of reasons why we may not be able to make a deployment of our microservices independent, but in the context of data management, the most common offender is co-ownership of a data space by multiple microservices. Such co-ownership can compromise their loose coupling and our ability to independently deploy code.
