@@ -123,3 +123,11 @@ To achieve a reasonable sizing of microservices, we should:
 ## Chapter 5: Dealing with the Data
 
 There can be a number of reasons why we may not be able to make a deployment of our microservices independent, but in the context of data management, the most common offender is co-ownership of a data space by multiple microservices. Such co-ownership can compromise their loose coupling and our ability to independently deploy code.
+
+In monolith architectures, sharing of data is a common practice. In typical legacy systems, even in the more modular, service-oriented architecture (SOA) ones, code components co-own data across multiple services as a regular practice. It is actually very much expected—shared data is a primary pattern of integrating various modularized parts of a larger system.
+
+In a microservices architecture, independent deployability is emphasized as a core value and consequently, data sharing is prohibited — microservices are never allowed co-own responsibility for a data space in a database. It should be very clear which microservice owns any dataset in the database, or as we commonly state the principle: microservices must own (embed) their data. However, embedding Data Should Not Lead to an Explosion in the Number of Database Clusters.
+
+One way to prevent accessing the same data by multiple microservices is to use a delegate service which works like proxy between those microservices and the database.
+
+Another option is using shared spaces, such as data lakes which can enable multiple access to data with read-only permissions.
