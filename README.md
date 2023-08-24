@@ -135,3 +135,5 @@ Another option is using shared spaces, such as data lakes which can enable multi
 The third possible option is to use sagas (action-compensation pattern).
 
 The Event Sourcing pattern helps to avoid data-sharing. It defines an approach to handling operations on data that's driven by a sequence of events, each of which is recorded in an append-only store. Application code sends a series of events that imperatively describe each action that has occurred on the data to the event store, where they're persisted.
+
+In order to improve performance while using event sourcing, we can apply rolling snapshots. It just requires finding *natural time points* for the domain and aligning snapshots with them.
