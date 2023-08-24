@@ -158,3 +158,5 @@ We’ll use three concepts from the DevOps world in our infrastructure platform:
 * Immutable infrastructure
 * IaC - Infrastructure as Code
 * CI and CD
+
+An object is immutable if it can’t be changed after it’s created. The only way to update an immutable object is to destroy it and create a new one.
