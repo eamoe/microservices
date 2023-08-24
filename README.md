@@ -137,3 +137,11 @@ The third possible option is to use sagas (action-compensation pattern).
 The Event Sourcing pattern helps to avoid data-sharing. It defines an approach to handling operations on data that's driven by a sequence of events, each of which is recorded in an append-only store. Application code sends a series of events that imperatively describe each action that has occurred on the data to the event store, where they're persisted.
 
 In order to improve performance while using event sourcing, we can apply rolling snapshots. It just requires finding *natural time points* for the domain and aligning snapshots with them.
+
+To work with events, we neet to create an event store. The interface of an event store needs to support three basic functions:
+
+* The ability to store new events and assign the correct sequence so we can retrieve events in the order they were saved
+* The capability to notify event subscribers who are building projections about new events they care about and enable the Competing Consumers pattern
+* The ability to get N number of events after event X for a specific event type, for reconciliation flows; i.e., recalculation in case projection is lost, compromised, or doubted.
+
+Event Sourcing and CQRS (Command Query Responsibility Segregation) can help us avoid data sharing between microservices in sophisticated cases where you require data joins across service boundaries, but they come with a cost of complexity. We should always consider other, simpler approaches, such as the delegate service, before we resort to Event Sourcing, for a particular microservice.
