@@ -145,3 +145,16 @@ To work with events, we need to create an event store. The interface of an event
 * The ability to get N number of events after event X for a specific event type, for reconciliation flows; i.e., recalculation in case projection is lost, compromised, or doubted.
 
 Event Sourcing and CQRS (Command Query Responsibility Segregation) can help us avoid data sharing between microservices in sophisticated cases where you require data joins across service boundaries, but they come with a cost of complexity. We should always consider other, simpler approaches, such as the delegate service, before we resort to Event Sourcing, for a particular microservice.
+
+## Chapter 6: Building an Infrastructure Pipeline
+
+In order to reduce the work that our microservices teams need to do, we’ll need to make it easy for teams to move their code from local workstations onto a hosted infrastructure. So we’ll need to lower the barrier for teams to be able to provision environments and deploy their services into a hosted system. We’ll need to make it cheap and easy to create a new environment and provide the right kit to make releases safe and easy.
+
+In practice, achieving those goals is difficult if you don’t have a good way of improving the way you make changes to the infrastructure itself. If we can reduce the effort cost of building and changing the infrastructure, we’ll be able to deliver new environments more easily and put more focus on improving the infrastructure to meet our system goals.
+
+Building software in the DevOps way helps you reduce the time it takes to make changes to your applications, without introducing additional risk. When you do it right, it gives you both change speed and change safety at the same time.
+
+We’ll use three concepts from the DevOps world in our infrastructure platform:
+* Immutable infrastructure
+* IaC - Infrastructure as Code
+* CI and CD
