@@ -160,3 +160,7 @@ We’ll use three concepts from the DevOps world in our infrastructure platform:
 * CI and CD
 
 An object is immutable if it can’t be changed after it’s created. The only way to update an immutable object is to destroy it and create a new one.
+
+## Chapter 7: Building a Microservices Infrastructure
+
+Setting up the right infrastructure is vital to getting the most out of your microservices system. Microservices give us a nice way of breaking the parts of our application into bite-sized pieces. But we’ll need a lot of supporting infrastructure to make all those bite-sized services work together properly.
