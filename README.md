@@ -164,3 +164,5 @@ An object is immutable if it can’t be changed after it’s created. The only w
 ## Chapter 7: Building a Microservices Infrastructure
 
 Setting up the right infrastructure is vital to getting the most out of your microservices system. Microservices give us a nice way of breaking the parts of our application into bite-sized pieces. But we’ll need a lot of supporting infrastructure to make all those bite-sized services work together properly.
+
+Containers make it easy for us to build microservices that run predictably across environments as a self-contained unit. But, containers don’t know how to start themselves, scale themselves, or heal themselves when they break. Containers work great in isolation, but a lot of operations work is required to manage them in productionlike environments. That’s where Kubernetes comes in. Kubernetes is a container orchestration tool developed by Google. It solves the problems of working with containers at scale. Kubernetes provides a tool-based solution for deploying, scaling, observing, and managing container-based applications.
