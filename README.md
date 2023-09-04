@@ -172,3 +172,7 @@ GitOps is an operational framework that takes DevOps best practices used for app
 Argo CD is a GitOps tool that facilitates the work of deploying Kubernetes applications.
 
 ## Chapter 8: Developer WOrkspace
+
+One thing you should certainly avoid is every team creating a pipeline for their microservice in their own way, without any consistency with the codebases of other microservices. Creating a new microservice should be a quick and predictable process. Ideally, it should be a templated process in which the majority of things are fully automated.
+
+Robust CI/CD pipelines are crucial, but just as important is how the local development workspace is set up and what practices teams use for creating code.
