@@ -176,3 +176,18 @@ Argo CD is a GitOps tool that facilitates the work of deploying Kubernetes appli
 One thing you should certainly avoid is every team creating a pipeline for their microservice in their own way, without any consistency with the codebases of other microservices. Creating a new microservice should be a quick and predictable process. Ideally, it should be a templated process in which the majority of things are fully automated.
 
 Robust CI/CD pipelines are crucial, but just as important is how the local development workspace is set up and what practices teams use for creating code.
+
+When trying to introduce any organizational standards, it’s useful to clarify and agree on goals, so people can relate to the “why” of the process before they are presented with the actual mechanics, the “how” and “what” of it.
+
+We can use the following three high-level goals as a starting point:
+
+* Code can be set up in a short time frame (for example, in under an hour)
+* New microservices can be created quickly, easily, and predictably (providing well-thought-out templates for each of the standard tech stacks is a powerful way of achieving such consistency and high quality, while also increasing development speed)
+* Quality control must be automated
+
+Based on these goals, we can derive a set of fundamental guidelines for a developer workspace setup.
+
+### 10 Workspace Guidelines for a Superior Developer Experience
+
+1. **Make Docker the only dependency** - The “works for me” syndrome plagues many developer teams. It’s essential that anybody be able to easily create the same environment. As such, elaborate, manual setups should be banned.
+2. **Remote or local should not matter** - Setup should work regardless of whether a developer runs code on their own laptop or on a cloud server via an IDE’s remote development/SFTP plug-ins.
