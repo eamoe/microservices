@@ -295,3 +295,7 @@ To compile actions and queries for ms-reservations:
 **Response**: Success (*200 Success*) or failure (*403 Forbidden*)
 
 The beauty of writing down actions and queries is that they bring us much closer to being able to create the technical specifications of the services than when jobs are presented in their business-oriented, jobs (JTBD) format.
+
+Now we can proceed with describing the microservices we intend to build in a standard format. In our case, we will build RESTful microservices and describe them with an [Open API Specification](https://swagger.io/specification/).
+
+Based on the actions and queries specification we just designed, translation into an OpenAPI Specification (OAS) becomes fairly straightforward.
