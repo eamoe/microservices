@@ -240,4 +240,18 @@ Now we need to use the SEED(S) design process for them. According to the first s
 * The flights management microservice: ms-flights
 * The reservations management microservice: ms-reservations
 
+Some sample JTBD that our product team may have collected from customer interviews and business analysis research could be:
 
+> *When* a customer interacts with the UI, *the app* needs to render a seating chart showing occupied and available seats, *so the customer can* choose a seat.
+
+> *When* a customer is finalizing a booking, *the web app* needs to reserve a seat for the customer, *so the app can* avoid accidental seat reservation conflicts.
+
+Recall that we recommended BFF APIs be a thin layer with no business logic implementation. They mostly just orchestrate microservices. So there are usually jobs for which a BFF API needs microservices. The following list of jobs, the more technical JTBDs, describes the needs between the BFF APIs and microservices:
+
+> *When* the API is asked to provide a seating chart, the *API needs* ms-flights to provide a seating setup of the flight, *so the API can* retrieve availabilities and render the final result.
+
+> *When* the API needs to render a seating chart, the *API needs* ms-reservations to provide a list of already reserved seats *so the API can* add that data to the seating setup and return the seating chart.
+
+> *When* the API is asked to reserve a seat, the *API needs* ms-reservations to fulfill the reservation, *so the API can* reserve the seat.
+
+Note that we don’t let *ms-flights* call *ms-reservations* to assemble the seating chart, and instead have the BFF API handle the interaction. This refers back to the recommendation that direct microservice-to-microservice calls be avoided.
