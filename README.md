@@ -257,3 +257,41 @@ Recall that we recommended BFF APIs be a thin layer with no business logic imple
 Note that we don’t let *ms-flights* call *ms-reservations* to assemble the seating chart, and instead have the BFF API handle the interaction. This refers back to the recommendation that direct microservice-to-microservice calls be avoided.
 
 Following the SEED(S) methodology, next we describe the interactions represented by various jobs, using UML sequence diagrams in [PlantUML format](interactions.puml).
+
+Once we have the JTBDs, and understand the interactions, we can translate them into queries and actions. We will do this for both *ms-flights* and *ms-reservations*. We should also design actions and queries for the BFF API, not just microservices, but we will leave beyond the current implementation.
+
+### Flights Microservice
+
+To compile actions and queries for ms-flights:
+
+**Get flight details**
+
+**Input**: *flight_no*, *departure_local_date_time* (ISO8601 format and in the local time zone)
+
+**Response**: A unique *flight_id* identifying a specific flight on a specific date. In practice, this endpoint will very likely return other flight-related fields, but those are irrelevant for our context, so we are skipping over them.
+
+**Get flight seating (the diagram of seats on a flight)**
+
+**Input**: *flight_id*
+
+**Response**: Seat Map object in JSON format
+
+### Reservations Microservice
+
+To compile actions and queries for ms-reservations:
+
+**Query already reserved seats on a flight**
+
+**Input**: *flight_id*
+
+**Response**: A list of already-taken seat numbers, each seat number in a format like “2A”
+
+**Reserve a seat on a flight**
+
+**Input**: *flight_id*, *customer_id*, *seat_num*
+
+**Expected outcome**: A seat is reserved and unavailable to others, or an error fired if the seat was unavailable
+
+**Response**: Success (*200 Success*) or failure (*403 Forbidden*)
+
+The beauty of writing down actions and queries is that they bring us much closer to being able to create the technical specifications of the services than when jobs are presented in their business-oriented, jobs (JTBD) format.
