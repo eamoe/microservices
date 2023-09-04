@@ -191,3 +191,34 @@ Based on these goals, we can derive a set of fundamental guidelines for a develo
 
 1. **Make Docker the only dependency** - The “works for me” syndrome plagues many developer teams. It’s essential that anybody be able to easily create the same environment. As such, elaborate, manual setups should be banned.
 2. **Remote or local should not matter** - Setup should work regardless of whether a developer runs code on their own laptop or on a cloud server via an IDE’s remote development/SFTP plug-ins.
+3. **Ensure a heterogeneous-ready workspace** - A good setup should accommodate multiple microservices written in multiple programming languages, using multiple data storage systems.
+4. **Running a single microservice and/or a subsystem of several ones should be equally easy** - Let’s say an airlines reservation system is implemented as three microservices. A developer should be able to check out any particular microservice individually and work on it, or check out an entire subsystem of interacting microservices (the reservation system implementation) and work on that. Both of these tasks should be very easy.
+5. **Run databases locally, if possible** - For the sake of isolation, for any database system’s local, Docker-ized alternatives should be provided, and it should be trivial to switch over to cloud (e.g., AWS) services via a configuration change.
+6. **Implement containerization guidelines**
+7. **Establish rules for painless database migrations**
+8. **Determine a pragmatic automated testing practice** - We advocate for a measured, pragmatic approach to automated testing, one that balances developer experience with quality metrics and accommodates the differing personal preferences of various developers on the team.
+9. **Branching and merging**
+
+    * All development should happen on feature and bug branches.
+    * Merging of a branch to the main branch should not be allowed without all tests (including integration tests in a temporary integration cluster spun up for the branch) passing on that branch.
+    * The status of the test runs (after each commit/push) must be readily visible for code reviewers during pull requests.
+    * Linting/static analysis errors should prevent code from being pushed to a branch, and/or merged into the main branch.
+10. **Common targets should be codified in a makefile** - Every code repository (and generally there should be one repository per microservice) should have a makefile that makes it easy for anybody to work with the code, regardless of the programming language stack used. This makefile should have standard targets, so that no matter what codebase, in whatever language the developer clones, they should know that by running *make run* they can bring that codebase up, and by running *make test* they can run automated tests.
+
+We recommend defining and implementing the following standard targets for your microservice makefiles:
+
+* **start**: Run the code.
+* **stop**: Stop the code.
+* **build**: Build the code (typically a container image).
+* **clean**: Clean all caches and run from scratch.
+* **add-module**
+* **remove-module**
+* **dependencies**: Ensure all modules declared in dependency management are installed.
+* **test**: Run all tests and produce a coverage report.
+* **tests-unit**: Run only unit tests.
+* **tests-at**: Run only acceptance tests.
+* **lint**: Run a linter to ensure conformance of coding style with defined standards.
+* **migrate**: Run database migrations.
+* **add-migration**: Create a new database migration.
+* **logs**: Show logs (from within the container).
+* **exec**: Execute a custom command inside the code’s container.
