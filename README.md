@@ -171,7 +171,7 @@ GitOps is an operational framework that takes DevOps best practices used for app
 
 Argo CD is a GitOps tool that facilitates the work of deploying Kubernetes applications.
 
-## Chapter 8: Developer WOrkspace
+## Chapter 8: Developer Workspace
 
 One thing you should certainly avoid is every team creating a pipeline for their microservice in their own way, without any consistency with the codebases of other microservices. Creating a new microservice should be a quick and predictable process. Ideally, it should be a templated process in which the majority of things are fully automated.
 
@@ -192,7 +192,7 @@ Based on these goals, we can derive a set of fundamental guidelines for a develo
 1. **Make Docker the only dependency** - The “works for me” syndrome plagues many developer teams. It’s essential that anybody be able to easily create the same environment. As such, elaborate, manual setups should be banned.
 2. **Remote or local should not matter** - Setup should work regardless of whether a developer runs code on their own laptop or on a cloud server via an IDE’s remote development/SFTP plug-ins.
 3. **Ensure a heterogeneous-ready workspace** - A good setup should accommodate multiple microservices written in multiple programming languages, using multiple data storage systems.
-4. **Running a single microservice and/or a subsystem of several ones should be equally easy** - Let’s say an airlines reservation system is implemented as three microservices. A developer should be able to check out any particular microservice individually and work on it, or check out an entire subsystem of interacting microservices (the reservation system implementation) and work on that. Both of these tasks should be very easy.
+4. **Running a single microservice and/or a subsystem of several ones should be equally easy** - Let’s say an airline reservation system is implemented as three microservices. A developer should be able to check out any particular microservice individually and work on it, or check out an entire subsystem of interacting microservices (the reservation system implementation) and work on that. Both of these tasks should be very easy.
 5. **Run databases locally, if possible** - For the sake of isolation, for any database system’s local, Docker-ized alternatives should be provided, and it should be trivial to switch over to cloud (e.g., AWS) services via a configuration change.
 6. **Implement containerization guidelines**
 7. **Establish rules for painless database migrations**
@@ -223,4 +223,4 @@ We recommend defining and implementing the following standard targets for your m
 * **logs**: Show logs (from within the container).
 * **exec**: Execute a custom command inside the code’s container.
 
-Generally, we do not recommend using local Kubernetes for everyday coding. Docker and Docker Compose can complete most containerization-related tasks more easily and they have more straightforward tooling for building container images. Kubernetes excels in orchestrating a runtime fleet of containers, which is rarely needed in a Dev environment, but which is crucial for environments such as production, preproduction, staging, performance testing, etc. However, in some circumstances you may want to use Kubernetes locally.
+Generally, we do not recommend using local Kubernetes for everyday coding. Docker and Docker Compose can complete most containerization-related tasks more easily and they have more straightforward tooling for building container images. Kubernetes excels in orchestrating a runtime fleet of containers, which is rarely needed in a Dev environment, but is crucial for environments such as production, preproduction, staging, performance testing, etc. However, in some circumstances, you may want to use Kubernetes locally.
