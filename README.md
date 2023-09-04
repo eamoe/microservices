@@ -170,3 +170,57 @@ Containers make it easy for us to build microservices that run predictably acros
 GitOps is an operational framework that takes DevOps best practices used for application development such as version control, collaboration, compliance, and CI/CD, and applies them to infrastructure automation.
 
 Argo CD is a GitOps tool that facilitates the work of deploying Kubernetes applications.
+
+## Chapter 8: Developer WOrkspace
+
+One thing you should certainly avoid is every team creating a pipeline for their microservice in their own way, without any consistency with the codebases of other microservices. Creating a new microservice should be a quick and predictable process. Ideally, it should be a templated process in which the majority of things are fully automated.
+
+Robust CI/CD pipelines are crucial, but just as important is how the local development workspace is set up and what practices teams use for creating code.
+
+When trying to introduce any organizational standards, it’s useful to clarify and agree on goals, so people can relate to the “why” of the process before they are presented with the actual mechanics, the “how” and “what” of it.
+
+We can use the following three high-level goals as a starting point:
+
+* Code can be set up in a short time frame (for example, in under an hour)
+* New microservices can be created quickly, easily, and predictably (providing well-thought-out templates for each of the standard tech stacks is a powerful way of achieving such consistency and high quality, while also increasing development speed)
+* Quality control must be automated
+
+Based on these goals, we can derive a set of fundamental guidelines for a developer workspace setup.
+
+### 10 Workspace Guidelines for a Superior Developer Experience
+
+1. **Make Docker the only dependency** - The “works for me” syndrome plagues many developer teams. It’s essential that anybody be able to easily create the same environment. As such, elaborate, manual setups should be banned.
+2. **Remote or local should not matter** - Setup should work regardless of whether a developer runs code on their own laptop or on a cloud server via an IDE’s remote development/SFTP plug-ins.
+3. **Ensure a heterogeneous-ready workspace** - A good setup should accommodate multiple microservices written in multiple programming languages, using multiple data storage systems.
+4. **Running a single microservice and/or a subsystem of several ones should be equally easy** - Let’s say an airlines reservation system is implemented as three microservices. A developer should be able to check out any particular microservice individually and work on it, or check out an entire subsystem of interacting microservices (the reservation system implementation) and work on that. Both of these tasks should be very easy.
+5. **Run databases locally, if possible** - For the sake of isolation, for any database system’s local, Docker-ized alternatives should be provided, and it should be trivial to switch over to cloud (e.g., AWS) services via a configuration change.
+6. **Implement containerization guidelines**
+7. **Establish rules for painless database migrations**
+8. **Determine a pragmatic automated testing practice** - We advocate for a measured, pragmatic approach to automated testing, one that balances developer experience with quality metrics and accommodates the differing personal preferences of various developers on the team.
+9. **Branching and merging**
+
+    * All development should happen on feature and bug branches.
+    * Merging of a branch to the main branch should not be allowed without all tests (including integration tests in a temporary integration cluster spun up for the branch) passing on that branch.
+    * The status of the test runs (after each commit/push) must be readily visible for code reviewers during pull requests.
+    * Linting/static analysis errors should prevent code from being pushed to a branch, and/or merged into the main branch.
+10. **Common targets should be codified in a makefile** - Every code repository (and generally there should be one repository per microservice) should have a makefile that makes it easy for anybody to work with the code, regardless of the programming language stack used. This makefile should have standard targets, so that no matter what codebase, in whatever language the developer clones, they should know that by running *make run* they can bring that codebase up, and by running *make test* they can run automated tests.
+
+We recommend defining and implementing the following standard targets for your microservice makefiles:
+
+* **start**: Run the code.
+* **stop**: Stop the code.
+* **build**: Build the code (typically a container image).
+* **clean**: Clean all caches and run from scratch.
+* **add-module**
+* **remove-module**
+* **dependencies**: Ensure all modules declared in dependency management are installed.
+* **test**: Run all tests and produce a coverage report.
+* **tests-unit**: Run only unit tests.
+* **tests-at**: Run only acceptance tests.
+* **lint**: Run a linter to ensure conformance of coding style with defined standards.
+* **migrate**: Run database migrations.
+* **add-migration**: Create a new database migration.
+* **logs**: Show logs (from within the container).
+* **exec**: Execute a custom command inside the code’s container.
+
+Generally, we do not recommend using local Kubernetes for everyday coding. Docker and Docker Compose can complete most containerization-related tasks more easily and they have more straightforward tooling for building container images. Kubernetes excels in orchestrating a runtime fleet of containers, which is rarely needed in a Dev environment, but which is crucial for environments such as production, preproduction, staging, performance testing, etc. However, in some circumstances you may want to use Kubernetes locally.
