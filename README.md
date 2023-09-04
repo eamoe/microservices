@@ -299,3 +299,9 @@ The beauty of writing down actions and queries is that they bring us much closer
 Now we can proceed with describing the microservices we intend to build in a standard format. In our case, we will build RESTful microservices and describe them with an [Open API Specification](https://swagger.io/specification/).
 
 Based on the actions and queries specification we just designed, translation into an OpenAPI Specification (OAS) becomes fairly straightforward.
+
+Now that we have our service designs and the corresponding Open API Specifications, it’s time to proceed to the last step in the SEED(S) process: writing the code for the microservices.
+
+As we implement the flights and reservations microservices, we will practice the principles discussed earlier. Specifically, we will use different tech stacks for these services, so we can demonstrate their ability to support heterogeneous implementation. The reservations microservice will be implemented in Python and Flask, while the flights microservice will be implemented in Node/Express.js.
+
+Also, the two microservices will not share any data space and we will intentionally implement them using entirely different backend data systems: Redis for the reservations and MySQL for flights.
