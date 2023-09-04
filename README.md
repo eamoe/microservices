@@ -224,3 +224,20 @@ We recommend defining and implementing the following standard targets for your m
 * **exec**: Execute a custom command inside the code’s container.
 
 Generally, we do not recommend using local Kubernetes for everyday coding. Docker and Docker Compose can complete most containerization-related tasks more easily and they have more straightforward tooling for building container images. Kubernetes excels in orchestrating a runtime fleet of containers, which is rarely needed in a Dev environment, but is crucial for environments such as production, preproduction, staging, performance testing, etc. However, in some circumstances, you may want to use Kubernetes locally.
+
+## Chapter 8: Developing Microservices
+
+Let’s assume that an Event Storming session that you conducted for a flight management software product identified two major bounded contexts:
+* Flights management
+* Reservations management
+
+In the initial stages it pays off to design microservices in a coarse-grained way. Thus, our first two microservices can be *ms-flights* and *ms-reservations*.
+
+Now we need to use the SEED(S) design process for them. According to the first step of the SEED(S) methodology, we need to identify various actors. For our purposes, we’ll assume the following actors:
+* The customer trying to book the flight
+* The airline’s consumer app (web, mobile, etc.)
+* The web APIs that the app interacts with
+* The flights management microservice: ms-flights
+* The reservations management microservice: ms-reservations
+
+
