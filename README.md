@@ -222,3 +222,5 @@ We recommend defining and implementing the following standard targets for your m
 * **add-migration**: Create a new database migration.
 * **logs**: Show logs (from within the container).
 * **exec**: Execute a custom command inside the code’s container.
+
+Generally, we do not recommend using local Kubernetes for everyday coding. Docker and Docker Compose can complete most containerization-related tasks more easily and they have more straightforward tooling for building container images. Kubernetes excels in orchestrating a runtime fleet of containers, which is rarely needed in a Dev environment, but which is crucial for environments such as production, preproduction, staging, performance testing, etc. However, in some circumstances you may want to use Kubernetes locally.
