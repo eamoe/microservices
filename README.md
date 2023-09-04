@@ -255,3 +255,5 @@ Recall that we recommended BFF APIs be a thin layer with no business logic imple
 > *When* the API is asked to reserve a seat, the *API needs* ms-reservations to fulfill the reservation, *so the API can* reserve the seat.
 
 Note that we don’t let *ms-flights* call *ms-reservations* to assemble the seating chart, and instead have the BFF API handle the interaction. This refers back to the recommendation that direct microservice-to-microservice calls be avoided.
+
+Following the SEED(S) methodology, next we describe the interactions represented by various jobs, using UML sequence diagrams in [PlantUML format](interactions.puml).
