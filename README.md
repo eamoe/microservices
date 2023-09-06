@@ -305,3 +305,7 @@ Now that we have our service designs and the corresponding Open API Specificatio
 As we implement the flights and reservations microservices, we will practice the principles discussed earlier. Specifically, we will use different tech stacks for these services, so we can demonstrate their ability to support heterogeneous implementation. The reservations microservice will be implemented in Python and Flask, while the flights microservice will be implemented in Node/Express.js.
 
 Also, the two microservices will not share any data space and we will intentionally implement them using entirely different backend data systems: Redis for the reservations and MySQL for flights.
+
+Developing individual microservices is how teams should be spending most of their time. It’s essential for providing team autonomy, which leads to the ever-important coordination minimizations, and most of our system design work in the microservices style should indeed target the minimization of coordination needs.
+
+After implementing ms-flights & ms-reservations microservices, we need to implement a microservices-workspace that binds our microservices into the entire application.
