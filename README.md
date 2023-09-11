@@ -225,13 +225,13 @@ We recommend defining and implementing the following standard targets for your m
 
 Generally, we do not recommend using local Kubernetes for everyday coding. Docker and Docker Compose can complete most containerization-related tasks more easily and they have more straightforward tooling for building container images. Kubernetes excels in orchestrating a runtime fleet of containers, which is rarely needed in a Dev environment, but is crucial for environments such as production, preproduction, staging, performance testing, etc. However, in some circumstances, you may want to use Kubernetes locally.
 
-## Chapter 8: Developing Microservices
+## Chapter 9: Developing Microservices
 
 Let’s assume that an Event Storming session that you conducted for a flight management software product identified two major bounded contexts:
 * Flights management
 * Reservations management
 
-In the initial stages it pays off to design microservices in a coarse-grained way. Thus, our first two microservices can be *ms-flights* and *ms-reservations*.
+In the initial stages, it pays off to design microservices in a coarse-grained way. Thus, our first two microservices can be *ms-flights* and *ms-reservations*.
 
 Now we need to use the SEED(S) design process for them. According to the first step of the SEED(S) methodology, we need to identify various actors. For our purposes, we’ll assume the following actors:
 * The customer trying to book the flight
@@ -256,7 +256,7 @@ Recall that we recommended BFF APIs be a thin layer with no business logic imple
 
 Note that we don’t let *ms-flights* call *ms-reservations* to assemble the seating chart, and instead have the BFF API handle the interaction. This refers back to the recommendation that direct microservice-to-microservice calls be avoided.
 
-Following the SEED(S) methodology, next we describe the interactions represented by various jobs, using UML sequence diagrams in [PlantUML format](interactions.puml).
+Following the SEED(S) methodology, we describe the interactions represented by various jobs, using UML sequence diagrams in [PlantUML format](interactions.puml).
 
 Once we have the JTBDs, and understand the interactions, we can translate them into queries and actions. We will do this for both *ms-flights* and *ms-reservations*. We should also design actions and queries for the BFF API, not just microservices, but we will leave beyond the current implementation.
 
@@ -268,7 +268,7 @@ To compile actions and queries for ms-flights:
 
 **Input**: *flight_no*, *departure_local_date_time* (ISO8601 format and in the local time zone)
 
-**Response**: A unique *flight_id* identifying a specific flight on a specific date. In practice, this endpoint will very likely return other flight-related fields, but those are irrelevant for our context, so we are skipping over them.
+**Response**: A unique *flight_id* identifying a specific flight on a specific date. In practice, this endpoint will very likely return other flight-related fields, but those are irrelevant to our context, so we are skipping over them.
 
 **Get flight seating (the diagram of seats on a flight)**
 
@@ -290,7 +290,7 @@ To compile actions and queries for ms-reservations:
 
 **Input**: *flight_id*, *customer_id*, *seat_num*
 
-**Expected outcome**: A seat is reserved and unavailable to others, or an error fired if the seat was unavailable
+**Expected outcome**: A seat is reserved and unavailable to others, or an error is fired if the seat is unavailable
 
 **Response**: Success (*200 Success*) or failure (*403 Forbidden*)
 
