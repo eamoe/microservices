@@ -309,3 +309,5 @@ Also, the two microservices will not share any data space and we will intentiona
 Developing individual microservices is how teams should be spending most of their time. It’s essential for providing team autonomy, which leads to the ever-important coordination minimizations, and most of our system design work in the microservices style should indeed target the minimization of coordination needs.
 
 After implementing ms-flights & ms-reservations microservices, we need to implement a microservices-workspace that binds our microservices into the entire application.
+
+## Chapter 10: Releasing Microservices
