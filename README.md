@@ -224,3 +224,88 @@ We recommend defining and implementing the following standard targets for your m
 * **exec**: Execute a custom command inside the code’s container.
 
 Generally, we do not recommend using local Kubernetes for everyday coding. Docker and Docker Compose can complete most containerization-related tasks more easily and they have more straightforward tooling for building container images. Kubernetes excels in orchestrating a runtime fleet of containers, which is rarely needed in a Dev environment, but is crucial for environments such as production, preproduction, staging, performance testing, etc. However, in some circumstances, you may want to use Kubernetes locally.
+
+## Chapter 9: Developing Microservices
+
+Let’s assume that an Event Storming session that you conducted for a flight management software product identified two major bounded contexts:
+* Flights management
+* Reservations management
+
+In the initial stages, it pays off to design microservices in a coarse-grained way. Thus, our first two microservices can be *ms-flights* and *ms-reservations*.
+
+Now we need to use the SEED(S) design process for them. According to the first step of the SEED(S) methodology, we need to identify various actors. For our purposes, we’ll assume the following actors:
+* The customer trying to book the flight
+* The airline’s consumer app (web, mobile, etc.)
+* The web APIs that the app interacts with
+* The flights management microservice: ms-flights
+* The reservations management microservice: ms-reservations
+
+Some sample JTBD that our product team may have collected from customer interviews and business analysis research could be:
+
+> *When* a customer interacts with the UI, *the app* needs to render a seating chart showing occupied and available seats, *so the customer can* choose a seat.
+
+> *When* a customer is finalizing a booking, *the web app* needs to reserve a seat for the customer, *so the app can* avoid accidental seat reservation conflicts.
+
+Recall that we recommended BFF APIs be a thin layer with no business logic implementation. They mostly just orchestrate microservices. So there are usually jobs for which a BFF API needs microservices. The following list of jobs, the more technical JTBDs, describes the needs between the BFF APIs and microservices:
+
+> *When* the API is asked to provide a seating chart, the *API needs* ms-flights to provide a seating setup of the flight, *so the API can* retrieve availabilities and render the final result.
+
+> *When* the API needs to render a seating chart, the *API needs* ms-reservations to provide a list of already reserved seats *so the API can* add that data to the seating setup and return the seating chart.
+
+> *When* the API is asked to reserve a seat, the *API needs* ms-reservations to fulfill the reservation, *so the API can* reserve the seat.
+
+Note that we don’t let *ms-flights* call *ms-reservations* to assemble the seating chart, and instead have the BFF API handle the interaction. This refers back to the recommendation that direct microservice-to-microservice calls be avoided.
+
+Following the SEED(S) methodology, we describe the interactions represented by various jobs, using UML sequence diagrams in [PlantUML format](interactions.puml).
+
+Once we have the JTBDs, and understand the interactions, we can translate them into queries and actions. We will do this for both *ms-flights* and *ms-reservations*. We should also design actions and queries for the BFF API, not just microservices, but we will leave beyond the current implementation.
+
+### Flights Microservice
+
+To compile actions and queries for ms-flights:
+
+**Get flight details**
+
+**Input**: *flight_no*, *departure_local_date_time* (ISO8601 format and in the local time zone)
+
+**Response**: A unique *flight_id* identifying a specific flight on a specific date. In practice, this endpoint will very likely return other flight-related fields, but those are irrelevant to our context, so we are skipping over them.
+
+**Get flight seating (the diagram of seats on a flight)**
+
+**Input**: *flight_id*
+
+**Response**: Seat Map object in JSON format
+
+### Reservations Microservice
+
+To compile actions and queries for ms-reservations:
+
+**Query already reserved seats on a flight**
+
+**Input**: *flight_id*
+
+**Response**: A list of already-taken seat numbers, each seat number in a format like “2A”
+
+**Reserve a seat on a flight**
+
+**Input**: *flight_id*, *customer_id*, *seat_num*
+
+**Expected outcome**: A seat is reserved and unavailable to others, or an error is fired if the seat is unavailable
+
+**Response**: Success (*200 Success*) or failure (*403 Forbidden*)
+
+The beauty of writing down actions and queries is that they bring us much closer to being able to create the technical specifications of the services than when jobs are presented in their business-oriented, jobs (JTBD) format.
+
+Now we can proceed with describing the microservices we intend to build in a standard format. In our case, we will build RESTful microservices and describe them with an [Open API Specification](https://swagger.io/specification/).
+
+Based on the actions and queries specification we just designed, translation into an OpenAPI Specification (OAS) becomes fairly straightforward.
+
+Now that we have our service designs and the corresponding Open API Specifications, it’s time to proceed to the last step in the SEED(S) process: writing the code for the microservices.
+
+As we implement the flights and reservations microservices, we will practice the principles discussed earlier. Specifically, we will use different tech stacks for these services, so we can demonstrate their ability to support heterogeneous implementation. The reservations microservice will be implemented in Python and Flask, while the flights microservice will be implemented in Node/Express.js.
+
+Also, the two microservices will not share any data space and we will intentionally implement them using entirely different backend data systems: Redis for the reservations and MySQL for flights.
+
+Developing individual microservices is how teams should be spending most of their time. It’s essential for providing team autonomy, which leads to the ever-important coordination minimizations, and most of our system design work in the microservices style should indeed target the minimization of coordination needs.
+
+After implementing ms-flights & ms-reservations microservices, we need to implement a microservices-workspace that binds our microservices into the entire application.
