@@ -311,3 +311,7 @@ Developing individual microservices is how teams should be spending most of thei
 After implementing ms-flights & ms-reservations microservices, we need to implement a microservices-workspace that binds our microservices into the entire application.
 
 ## Chapter 10: Releasing Microservices
+
+Kubernetes is popular because it handles a lot of the work that needs to be done to start containers, check on their health, find services, replicate them, and start them again when they fail. This gives our system the resilience and self-healing qualities that will help us meet our guiding principles.
+
+Helm is a package manager for Kubernetes. You need to make multiple calls to the Kubernetes API, letting it know how, when, and where you want to deploy your containers. To help manage some of that complexity, we’ll use the Helm packaging tool.
