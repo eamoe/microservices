@@ -331,3 +331,18 @@ These are all important reasons to change and our architecture should facilitate
 * Optimizing the CI/CD pipeline to deliver changes faster
 
 There’s no doubt that you’ll need to support extrinsic change. But to get the best value from your system you’ll need to plan for and execute intrinsic change as well. A good way to adopt this continual improvement mindset is to use data and measurements to guide your decisions.
+
+A classic problem in software development is overengineering and premature optimization. This happens when we design software or architecture to resolve a problem that hardly ever occurs. Or when our solution to a predicted problem is more costly than the problem itself will ever be.
+
+This can be a danger for a microservices system as well. That’s why it’s a good idea to use data and measurements to guide your decision making about when to make changes—especially the intrinsic improvement ones. Without data, you’ll be guessing and you’ll probably end up working hard to improve parts of the system that actually don’t need any help. Meanwhile, other pressing problem areas may go undetected. With finite resources, you can’t afford to work that way.
+
+Product teams use data to make better informed decisions about the changes they want to make. Businesses use objective and key results (OKRs), key performance indicators (KPIs), net promoter scores, satisfaction surveys, and revenue numbers to help shape their strategic decision making and their backlog of changes.
+
+You’ll need something similar to inform your improvement and optimization plans. For example, consider collecting the following project, design, and runtime metrics to get a better understanding of your improvement opportunities:
+
+* Change time per microservice
+* Frequency of changes per microservice
+* Number of microservices changed per change request
+* Lines of code in a microservice (as a datapoint, not a constraint!)
+* Runtime latency per microservice
+* Dependencies between microservices
