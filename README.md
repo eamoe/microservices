@@ -346,3 +346,12 @@ You’ll need something similar to inform your improvement and optimization plan
 * Lines of code in a microservice (as a datapoint, not a constraint!)
 * Runtime latency per microservice
 * Dependencies between microservices
+
+There are many potential impacts that come from software change, but four in particular seem to cause the most strife for modern organizations:
+
+* implementation time - This includes the time required to understand the current state, make the desired changes, test changes, and update the production environment. A big factor for implementation time is the readability, learnability, and maintainability of the components to be changed.
+* coordination time - Coordination time is a subset of implementation time, but it’s worth calling out on its own. Coordination time can include the amount of time spent getting access to resources and gaining permission and agreement on change activities and the general “organizational friction” that comes from working in a large organization. Coordination time is often a factor of organizational design and structure.
+* downtime - Downtime is a measurement of how long the system or a system component remains unavailable while a change is being implemented. Years ago, downtime was an accepted part of the software change process. But times and expectations have changed. Now there is increasing pressure on technology teams to minimize the downtime required for changes. In fact, in a microservices system it’s common to strive for a “zero-downtime” change model in which the system remains constantly available.
+* consumer impact - An often forgotten impact is the cost that a change has on the users of the system. Downtime captures one form of consumer impact, but even in a “zerodowntime” model there can be costly impacts that could have been avoided. For example, a change to an infrastructure module may have wide-reaching impact on microservice developer teams. Similarly, a change to an interface can break the code of every component that uses it.
+
+Software architecture has a big role to play in the costs and impacts of change across all four of the lenses we’ve described. But another part of the story is the way that changes are applied. Microservices architectures, cloud infrastructures, and DevOps practices have enabled practices that are a huge leap forward. Let’s take a look at two modern deployment patterns as well as an older one that has managed to stick around.
