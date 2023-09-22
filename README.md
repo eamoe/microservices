@@ -309,3 +309,9 @@ Also, the two microservices will not share any data space and we will intentiona
 Developing individual microservices is how teams should be spending most of their time. It’s essential for providing team autonomy, which leads to the ever-important coordination minimizations, and most of our system design work in the microservices style should indeed target the minimization of coordination needs.
 
 After implementing ms-flights & ms-reservations microservices, we need to implement a microservices-workspace that binds our microservices into the entire application.
+
+## Chapter 10: Releasing Microservices
+
+Kubernetes is popular because it handles a lot of the work that needs to be done to start containers, check on their health, find services, replicate them, and start them again when they fail. This gives our system the resilience and self-healing qualities that will help us meet our guiding principles.
+
+Helm is a package manager for Kubernetes. You need to make multiple calls to the Kubernetes API, letting it know how, when, and where you want to deploy your containers. To help manage some of that complexity, we’ll use the Helm packaging tool.
