@@ -315,3 +315,19 @@ After implementing ms-flights & ms-reservations microservices, we need to implem
 Kubernetes is popular because it handles a lot of the work that needs to be done to start containers, check on their health, find services, replicate them, and start them again when they fail. This gives our system the resilience and self-healing qualities that will help us meet our guiding principles.
 
 Helm is a package manager for Kubernetes. You need to make multiple calls to the Kubernetes API, letting it know how, when, and where you want to deploy your containers. To help manage some of that complexity, we’ll use the Helm packaging tool.
+
+## Chapter 11: Managing Change
+
+When people think about software change, they often think about extrinsic drivers—the things that come from business or user input, such as:
+
+* Supporting a new product launch
+* Resolving a logic bug that is degrading the user experience
+* Integrating with a new partner
+
+These are all important reasons to change and our architecture should facilitate these kinds of changes to make them as cost-effective as possible. But it’s important to understand that the microservices style is an optimization technique. That means we should consider intrinsic drivers as well. The following changes come from our observation of the system itself:
+
+* Splitting a microservice to reduce code complexity
+* Redeploying infrastructure to avoid drifting from the infrastructure code
+* Optimizing the CI/CD pipeline to deliver changes faster
+
+There’s no doubt that you’ll need to support extrinsic change. But to get the best value from your system you’ll need to plan for and execute intrinsic change as well. A good way to adopt this continual improvement mindset is to use data and measurements to guide your decisions.
