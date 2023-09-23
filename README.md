@@ -315,3 +315,43 @@ After implementing ms-flights & ms-reservations microservices, we need to implem
 Kubernetes is popular because it handles a lot of the work that needs to be done to start containers, check on their health, find services, replicate them, and start them again when they fail. This gives our system the resilience and self-healing qualities that will help us meet our guiding principles.
 
 Helm is a package manager for Kubernetes. You need to make multiple calls to the Kubernetes API, letting it know how, when, and where you want to deploy your containers. To help manage some of that complexity, we’ll use the Helm packaging tool.
+
+## Chapter 11: Managing Change
+
+When people think about software change, they often think about extrinsic drivers—the things that come from business or user input, such as:
+
+* Supporting a new product launch
+* Resolving a logic bug that is degrading the user experience
+* Integrating with a new partner
+
+These are all important reasons to change and our architecture should facilitate these kinds of changes to make them as cost-effective as possible. But it’s important to understand that the microservices style is an optimization technique. That means we should consider intrinsic drivers as well. The following changes come from our observation of the system itself:
+
+* Splitting a microservice to reduce code complexity
+* Redeploying infrastructure to avoid drifting from the infrastructure code
+* Optimizing the CI/CD pipeline to deliver changes faster
+
+There’s no doubt that you’ll need to support extrinsic change. But to get the best value from your system you’ll need to plan for and execute intrinsic change as well. A good way to adopt this continual improvement mindset is to use data and measurements to guide your decisions.
+
+A classic problem in software development is overengineering and premature optimization. This happens when we design software or architecture to resolve a problem that hardly ever occurs. Or when our solution to a predicted problem is more costly than the problem itself will ever be.
+
+This can be a danger for a microservices system as well. That’s why it’s a good idea to use data and measurements to guide your decision making about when to make changes—especially the intrinsic improvement ones. Without data, you’ll be guessing and you’ll probably end up working hard to improve parts of the system that actually don’t need any help. Meanwhile, other pressing problem areas may go undetected. With finite resources, you can’t afford to work that way.
+
+Product teams use data to make better informed decisions about the changes they want to make. Businesses use objective and key results (OKRs), key performance indicators (KPIs), net promoter scores, satisfaction surveys, and revenue numbers to help shape their strategic decision making and their backlog of changes.
+
+You’ll need something similar to inform your improvement and optimization plans. For example, consider collecting the following project, design, and runtime metrics to get a better understanding of your improvement opportunities:
+
+* Change time per microservice
+* Frequency of changes per microservice
+* Number of microservices changed per change request
+* Lines of code in a microservice (as a datapoint, not a constraint!)
+* Runtime latency per microservice
+* Dependencies between microservices
+
+There are many potential impacts that come from software change, but four in particular seem to cause the most strife for modern organizations:
+
+* implementation time - This includes the time required to understand the current state, make the desired changes, test changes, and update the production environment. A big factor for implementation time is the readability, learnability, and maintainability of the components to be changed.
+* coordination time - Coordination time is a subset of implementation time, but it’s worth calling out on its own. Coordination time can include the amount of time spent getting access to resources and gaining permission and agreement on change activities and the general “organizational friction” that comes from working in a large organization. Coordination time is often a factor of organizational design and structure.
+* downtime - Downtime is a measurement of how long the system or a system component remains unavailable while a change is being implemented. Years ago, downtime was an accepted part of the software change process. But times and expectations have changed. Now there is increasing pressure on technology teams to minimize the downtime required for changes. In fact, in a microservices system it’s common to strive for a “zero-downtime” change model in which the system remains constantly available.
+* consumer impact - An often forgotten impact is the cost that a change has on the users of the system. Downtime captures one form of consumer impact, but even in a “zerodowntime” model there can be costly impacts that could have been avoided. For example, a change to an infrastructure module may have wide-reaching impact on microservice developer teams. Similarly, a change to an interface can break the code of every component that uses it.
+
+Software architecture has a big role to play in the costs and impacts of change across all four of the lenses we’ve described. But another part of the story is the way that changes are applied. Microservices architectures, cloud infrastructures, and DevOps practices have enabled practices that are a huge leap forward. Let’s take a look at two modern deployment patterns as well as an older one that has managed to stick around.
